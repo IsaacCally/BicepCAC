@@ -15,9 +15,10 @@ step "deploy-a-bicep-template" {
             image = "octopusdeploy/worker-tools:5.2.0-windows.ltsc2019"
         }
 
-        packages {
+        packages "bicepstep" {
             acquisition_location = "ExecutionTarget"
-            package_id = ""
+            feed = "octopus-server-built-in"
+            package_id = "bicepstep"
         }
 
         inputs {
