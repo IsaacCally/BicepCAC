@@ -1,0 +1,40 @@
+step "deploy-a-bicep-template" {
+    name = "Deploy a Bicep template"
+    package_requirement = "AfterPackageAcquisition"
+
+    action {
+        action_type = "deploy-a-bicep-template"
+        properties = {
+            OctopusUseBundledTooling = "False"
+        }
+        step_package_version = "1.0.2"
+        worker_pool = "default-worker-pool"
+
+        container {
+            feed = "dockerhub"
+            image = "octopusdeploy/worker-tools:5.2.0-windows.ltsc2019"
+        }
+
+        packages "bicepstep" {
+            acquisition_location = "ExecutionTarget"
+            feed = "octopus-server-built-in"
+            package_id = "bicepstep"
+            step_package_inputs_reference_id = "3d86831c-cb32-4645-b5bf-29b854e88606"
+        }
+
+        inputs {
+            account = "Accounts-201"
+            isCompleteMode = false
+            name = "Deploy a Bicep Template"
+            resourceGroup = "isaac-bicep-containers"
+            resourceGroupLocation = "eastus"
+
+            templateSource {
+                relativeTemplatePath = "index.bicep"
+                type = "package"
+
+                package {}
+            }
+        }
+    }
+}
