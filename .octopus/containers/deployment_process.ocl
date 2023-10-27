@@ -37,7 +37,11 @@ step "deploy-a-bicep-template" {
                 relativeTemplatePath = "index.bicep"
                 type = "package"
 
-                package {}
+                package {
+                    referenceId: "2ce05fc4-c202-47cb-b5d9-46f1268dee40"
+                    packageId: "bicepstep"
+                    feedId: "feeds-builtin"
+                }
             }
         }
     }
