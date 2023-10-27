@@ -19,6 +19,7 @@ step "deploy-a-bicep-template" {
             acquisition_location = "ExecutionTarget"
             feed = "octopus-server-built-in"
             package_id = "bicepstep"
+            step_package_inputs_reference_id = "2ce05fc4-c202-47cb-b5d9-46f1268dee40"
         }
 
         inputs {
