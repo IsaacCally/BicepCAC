@@ -10,14 +10,15 @@ step "deploy-a-bicep-template" {
         step_package_version = "1.0.2"
         worker_pool_variable = ""
 
-        packages {
+        packages "biceptemplate" {
             acquisition_location = "ExecutionTarget"
-            package_id = ""
+            feed = "octopus-server-built-in"
+            package_id = "biceptemplate"
         }
 
         inputs {
             account = "Accounts-101"
-            isCompleteMode = true
+            isCompleteMode = false
             name = "Deploy a Bicep Template"
             resourceGroup = "isaac-test-bicep"
             resourceGroupLocation = "East US"
