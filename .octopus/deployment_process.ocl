@@ -10,6 +10,13 @@ step "deploy-a-bicep-template" {
         step_package_version = "1.0.2"
         worker_pool_variable = ""
 
+        packages "biceptemplate" {
+            acquisition_location = "ExecutionTarget"
+            feed = "octopus-server-built-in"
+            package_id = "biceptemplate"
+            step_package_inputs_reference_id = "201f338a-0b50-4a26-8e5f-1a4b27f8ca8e"
+        }
+
         inputs {
             account = "Accounts-101"
             isCompleteMode = false
@@ -18,23 +25,10 @@ step "deploy-a-bicep-template" {
             resourceGroupLocation = "East US"
 
             templateSource {
-                sourceCode = <<-EOT
-                        param location string = resourceGroup().location
-                        param storageAccountName string = 'isaacbitheptesttwo' 
-                             
-                        resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-                          name: storageAccountName
-                          location: location
-                          sku: {
-                            name: 'Standard_LRS'
-                          }
-                          kind: 'StorageV2'
-                          properties: {
-                            accessTier: 'Hot'
-                          }
-                        }
-                        EOT
-                type = "sourceCode"
+                relativeTemplatePath = "biceptemplate.bicep"
+                type = "package"
+
+                package {}
             }
         }
     }
