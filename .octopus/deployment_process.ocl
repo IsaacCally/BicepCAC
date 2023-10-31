@@ -14,13 +14,14 @@ step "deploy-a-bicep-template" {
             acquisition_location = "ExecutionTarget"
             feed = "octopus-server-built-in"
             package_id = "biceptemplate"
+            step_package_inputs_reference_id = "3da30655-80bd-4a3e-8eec-6c0f2b309e9e"
         }
 
         inputs {
             account = "Accounts-101"
-            isCompleteMode = true
+            isCompleteMode = false
             name = "Deploy a Bicep Template"
-            resourceGroup = "asvhashdvhasdv"
+            resourceGroup = "aergewrbreb"
             resourceGroupLocation = "East US"
 
             templateSource {
