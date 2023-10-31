@@ -57,34 +57,30 @@ step "run-a-script" {
     }
 }
 
-step "cac-bicep" {
-    name = "Cac Bicep"
+step "bicep-caccing" {
+    name = "Bicep CACCing"
     package_requirement = "AfterPackageAcquisition"
 
     action {
         action_type = "deploy-a-bicep-template"
         properties = {
             Octopus.Action.RunOnServer = "true"
-            OctopusUseBundledTooling = "False"
         }
         step_package_version = "1.0.2"
         worker_pool_variable = ""
 
-        container {
-            feed = "docker-feed"
-            image = "octopusdeploy/worker-tools:5.2.0-windows.ltsc2019"
-        }
-
-        packages {
+        packages "biceptemplate" {
             acquisition_location = "ExecutionTarget"
-            package_id = ""
+            feed = "octopus-server-built-in"
+            package_id = "biceptemplate"
+            step_package_inputs_reference_id = "e8193caa-a1a9-4a63-a1a2-a3e6b2a2b1fb"
         }
 
         inputs {
             account = "Accounts-101"
-            isCompleteMode = true
+            isCompleteMode = false
             name = "Deploy a Bicep Template"
-            resourceGroup = "isaacbiceptesthj"
+            resourceGroup = "qwefqwgqewrg"
             resourceGroupLocation = "East US"
 
             templateSource {
