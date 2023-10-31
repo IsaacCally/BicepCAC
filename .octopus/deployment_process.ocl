@@ -75,9 +75,14 @@ step "cac-bicep" {
             image = "octopusdeploy/worker-tools:5.2.0-windows.ltsc2019"
         }
 
+        packages {
+            acquisition_location = "ExecutionTarget"
+            package_id = ""
+        }
+
         inputs {
             account = "Accounts-101"
-            isCompleteMode = false
+            isCompleteMode = true
             name = "Deploy a Bicep Template"
             resourceGroup = "isaacbiceptesthj"
             resourceGroupLocation = "East US"
