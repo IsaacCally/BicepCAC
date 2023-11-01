@@ -10,10 +10,10 @@ step "deploy-a-bicep-template" {
         step_package_version = "1.0.2"
         worker_pool_variable = ""
 
-        packages "biceptemplate" {
+        packages "Acme.Core" {
             acquisition_location = "ExecutionTarget"
             feed = "octopus-server-built-in"
-            package_id = "biceptemplate"
+            package_id = "Acme.Core"
             step_package_inputs_reference_id = "426530ef-9534-4e6a-9520-c72972667b2a"
         }
 
@@ -30,7 +30,7 @@ step "deploy-a-bicep-template" {
 
                 package {
                     feedId = "Feeds-1002"
-                    packageId = "biceptemplate"
+                    packageId = "Acme.Core"
                     referenceId = "426530ef-9534-4e6a-9520-c72972667b2a"
                 }
             }
