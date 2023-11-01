@@ -24,6 +24,11 @@ step "deploy-a-bicep-template" {
             resourceGroup = "qweqwef"
             resourceGroupLocation = "East US"
 
+            parameters {
+                Key = "storageAccountName"
+                Value = "somestoragenameztz"
+            }
+
             templateSource {
                 relativeTemplatePath = "biceptemplate.bicep"
                 type = "package"
