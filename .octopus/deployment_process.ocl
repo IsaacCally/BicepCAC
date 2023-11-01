@@ -14,21 +14,25 @@ step "deploy-a-bicep-template" {
             acquisition_location = "ExecutionTarget"
             feed = "octopus-server-built-in"
             package_id = "biceptemplate"
-            step_package_inputs_reference_id = "b7ea596d-c21d-4c0c-b3d7-92e6fc6d818f"
+            step_package_inputs_reference_id = "426530ef-9534-4e6a-9520-c72972667b2a"
         }
 
         inputs {
             account = "Accounts-101"
-            isCompleteMode = false
+            isCompleteMode = true
             name = "Deploy a Bicep Template"
-            resourceGroup = "affqwef"
+            resourceGroup = "qweqwef"
             resourceGroupLocation = "East US"
 
             templateSource {
                 relativeTemplatePath = "biceptemplate.bicep"
                 type = "package"
 
-                package {}
+                package {
+                    feedId = "Feeds-1002"
+                    packageId = "biceptemplate"
+                    referenceId = "426530ef-9534-4e6a-9520-c72972667b2a"
+                }
             }
         }
     }
